@@ -190,7 +190,44 @@ body {
     transform: translateX(-50%) rotate(35deg) scale(0.3); }
 
 .question3 .answerBox {
-  width: 100%; }
+  width: 100%;
+  position: relative; }
+  .question3 .answerBox.ani .overlay {
+    display: block; }
+  .question3 .answerBox.ani .cups .cupWrapper:nth-child(1) {
+    -moz-animation: rotateBall1 0.3s ease-in-out;
+    -webkit-animation: rotateBall1 0.3s ease-in-out;
+    animation: rotateBall1 0.3s ease-in-out;
+    -moz-animation-iteration-count: 5;
+    -webkit-animation-iteration-count: 5;
+    animation-iteration-count: 5;
+    -moz-animation-delay: 3s;
+    -webkit-animation-delay: 3s;
+    animation-delay: 3s; }
+  .question3 .answerBox.ani .cups .cupWrapper:nth-child(2) {
+    -moz-animation: rotateBall2 0.3s ease-in-out;
+    -webkit-animation: rotateBall2 0.3s ease-in-out;
+    animation: rotateBall2 0.3s ease-in-out;
+    -moz-animation-iteration-count: 5;
+    -webkit-animation-iteration-count: 5;
+    animation-iteration-count: 5;
+    -moz-animation-delay: 3s;
+    -webkit-animation-delay: 3s;
+    animation-delay: 3s; }
+  .question3 .answerBox.ani .cups .cupWrapper:nth-child(3) {
+    -moz-animation: rotateBall3 0.3s ease-in-out;
+    -webkit-animation: rotateBall3 0.3s ease-in-out;
+    animation: rotateBall3 0.3s ease-in-out;
+    -moz-animation-iteration-count: 5;
+    -webkit-animation-iteration-count: 5;
+    animation-iteration-count: 5;
+    -moz-animation-delay: 3s;
+    -webkit-animation-delay: 3s;
+    animation-delay: 3s; }
+  .question3 .answerBox.ani .cups .cupWrapper .cup {
+    -moz-animation: openAni 2s ease-in;
+    -webkit-animation: openAni 2s ease-in;
+    animation: openAni 2s ease-in; }
 .question3 .question {
   margin-bottom: 20px;
   line-height: 30px; }
@@ -207,6 +244,14 @@ body {
     display: inline-block;
     position: relative;
     padding: 5px; }
+.question3 .overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  display: none; }
 .question3 .cups {
   margin-top: 100px;
   text-align: center;
@@ -214,40 +259,6 @@ body {
   -moz-perspective: 1000;
   -webkit-perspective: 1000;
   perspective: 1000; }
-  .question3 .cups.ani .cupWrapper:nth-child(1) {
-    -moz-animation: rotateBall1 0.3s ease-in-out;
-    -webkit-animation: rotateBall1 0.3s ease-in-out;
-    animation: rotateBall1 0.3s ease-in-out;
-    -moz-animation-iteration-count: 5;
-    -webkit-animation-iteration-count: 5;
-    animation-iteration-count: 5;
-    -moz-animation-delay: 3s;
-    -webkit-animation-delay: 3s;
-    animation-delay: 3s; }
-  .question3 .cups.ani .cupWrapper:nth-child(2) {
-    -moz-animation: rotateBall2 0.3s ease-in-out;
-    -webkit-animation: rotateBall2 0.3s ease-in-out;
-    animation: rotateBall2 0.3s ease-in-out;
-    -moz-animation-iteration-count: 5;
-    -webkit-animation-iteration-count: 5;
-    animation-iteration-count: 5;
-    -moz-animation-delay: 3s;
-    -webkit-animation-delay: 3s;
-    animation-delay: 3s; }
-  .question3 .cups.ani .cupWrapper:nth-child(3) {
-    -moz-animation: rotateBall3 0.3s ease-in-out;
-    -webkit-animation: rotateBall3 0.3s ease-in-out;
-    animation: rotateBall3 0.3s ease-in-out;
-    -moz-animation-iteration-count: 5;
-    -webkit-animation-iteration-count: 5;
-    animation-iteration-count: 5;
-    -moz-animation-delay: 3s;
-    -webkit-animation-delay: 3s;
-    animation-delay: 3s; }
-  .question3 .cups.ani .cupWrapper .cup {
-    -moz-animation: openAni 2s ease-in;
-    -webkit-animation: openAni 2s ease-in;
-    animation: openAni 2s ease-in; }
   .question3 .cups .cupWrapper {
     position: relative;
     display: inline-block;

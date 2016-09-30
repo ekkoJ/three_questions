@@ -36,6 +36,8 @@ $(function(){
 
         currentMouseX = e.clientX;
         currentMouseY = e.clientY;
+        leftOffset = currentMouseX - $(this).offset().left;
+        topOffset = currentMouseY - $(this).offset().top;
         $(this).addClass('float');
         // mouseCurrentPosition(e);
         correctFloat(currentMouseX,currentMouseY);
@@ -97,6 +99,12 @@ $(function(){
                 TweenMax.set($this,{top:mouseMoveY,left:mouseMoveX});
 
                 //垃圾桶范围内
+                $('.trashBox').removeClass('disnone');
+                TweenMax.to('.trashBox',0.5,{autoAlpha:1});
+                trashX = $('.trashBox').offset().left;
+                trashY = $('.trashBox').offset().top;
+                trashHeight = $('.trashBox').height();
+                trashWidth = $('.trashBox').width();
                 if(mouseMoveX + ($this.width() * 0.85) > trashX){
                     if(mouseMoveY < trashY + trashHeight && mouseMoveY + $this.height() > trashY){
                         $('.trashBox').addClass('openTrash');
@@ -298,7 +306,7 @@ $(function(){
         if(cupMove_flag){
             cupMove_flag = false;
             thisTextIndex = $('.question3 .cupTexts').index(this);
-            $('.cups').removeClass('ani');
+            $('.answerBox').removeClass('ani');
 
             do{
                 redIndex = parseInt(Math.random()*3);
@@ -316,11 +324,13 @@ $(function(){
                         delay:0.5,
                         onComplete:function(){
                             $('.cup').attr('style','');
-                            $('.cups').addClass('ani');
+                            $('.answerBox').addClass('ani');
+
                             cupMove_flag = true;
                             $('.q3wrong,.blackframe').removeClass('disnone');
                             setTimeout(function(){
                                 $('.q3wrong,.blackframe').addClass('disnone');
+                                $('.answerBox').removeClass('ani');
                             },5000);
                         }
                     });
@@ -345,10 +355,10 @@ $(function(){
     function mouseCurrentPositionX(MouseX,MouseY,rangeArrX){ //将随机取得的X,Y赋给correct1
         recW = $('.question1 .questionBox').width();
         recH = $('.question1 .questionBox').height();
-        correct1W = $('.correct1').width();
-        correct1H = $('.correct1').height();
-        MouseX = getRadom(MouseX,rangeArrX,recW);
-        MouseY = getRadom(MouseY,rangeArrY,recH);
+        correct1W = parseInt($('.correct1').width());
+        correct1H = parseInt($('.correct1').height());
+        MouseX = getRadom(MouseX,rangeArrX,leftOffset);
+        MouseY = getRadom(MouseY,rangeArrY,topOffset);
 
         TweenMax.to('.correct1',0.3,{left:MouseX,top:MouseY});
     }
@@ -357,7 +367,11 @@ $(function(){
         var xlength = rangeArray.length;
         var xindex = parseInt(Math.random() * xlength);
 
-        while(rangeArray[xindex] >= MousePosition - ranges/2 && rangeArray[xindex] <= MousePosition + ranges/2){
+
+        // do{
+        //     xindex = parseInt(Math.random() * xlength);
+        // }while(rangeArray[xindex] < MousePosition - ranges/2 || rangeArray[xindex] > MousePosition + ranges/2);
+        while(rangeArray[xindex] >= MousePosition - ranges && rangeArray[xindex] <= MousePosition + ranges){
             xindex = parseInt(Math.random() * xlength);
         }
         return rangeArray[xindex];
@@ -370,7 +384,7 @@ $(function(){
         winh = $(window).height();
         correct1W = $('.correct1').width();
         var rangeArr = [];
-        for(i=0;i <= winw-correct1W-80;++i){
+        for(i=0;i <= winw - correct1W -80;++i){
             if(i+correct1W < recX || i > recX + recW){
                 rangeArr.push(i);
             }
@@ -384,7 +398,7 @@ $(function(){
         winh = $(window).height();
         correct1H = $('.correct1').height();
         var rangeArr2 = [];
-        for(i=0;i<=winh-correct1H;++i){
+        for(i=0;i<=winh - correct1H;++i){
             if(i+correct1H < recY || i > recY + recH){
                 rangeArr2.push(i);
             }
@@ -472,7 +486,10 @@ $(function(){
             $('.question2').addClass('right');
             $('.question3').removeClass('right');
             TweenMax.fromTo('.question3',0.5,{scale:0},{scale:1,ease:Back.easeOut,onComplete:function(){
-                $('.cups').addClass('ani');
+                $('.answerBox').addClass('ani');
+                setTimeout(function(){
+                    $('.answerBox').removeClass('ani');
+                },4500);
             }});
         }});
     }
@@ -481,6 +498,7 @@ $(function(){
     function alldone(){
         ++correctAnswer;
         $('.corr3,.blackframe').removeClass('disnone');
+        console.log(correctAnswer);
     }
 
 });

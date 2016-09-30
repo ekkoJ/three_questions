@@ -246,6 +246,36 @@ body{
 .question3{
     .answerBox{
         width: 100%;
+        position: relative;
+        &.ani{
+            .overlay{
+                display: block;
+            }
+            .cups{
+                .cupWrapper{
+                    &:nth-child(1){
+                        @include animation(rotateBall1 0.3s ease-in-out);
+                        @include animation-iteration-count(5);
+                        @include animation-delay(3s);
+                    }
+                    &:nth-child(2){
+                        @include animation(rotateBall2 0.3s ease-in-out);
+                        @include animation-iteration-count(5);
+                        @include animation-delay(3s);
+                    }
+                    &:nth-child(3){
+                        @include animation(rotateBall3 0.3s ease-in-out);
+                        @include animation-iteration-count(5);
+                        @include animation-delay(3s);
+                    }
+                    .cup{
+
+                        @include animation(openAni 2s ease-in);
+                    }
+                }
+            }
+
+        }
     }
     .question{
         margin-bottom: 20px;
@@ -267,35 +297,21 @@ body{
             padding: 5px;
         }
     }
+    .overlay{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 20;
+        display: none;
+    }
     .cups{
         margin-top: 100px;
         text-align: center;
         width: 100%;
         @include perspective(1000);
-        &.ani{
-            .cupWrapper{
 
-                &:nth-child(1){
-                    @include animation(rotateBall1 0.3s ease-in-out);
-                    @include animation-iteration-count(5);
-                    @include animation-delay(3s);
-                }
-                &:nth-child(2){
-                    @include animation(rotateBall2 0.3s ease-in-out);
-                    @include animation-iteration-count(5);
-                    @include animation-delay(3s);
-                }
-                &:nth-child(3){
-                    @include animation(rotateBall3 0.3s ease-in-out);
-                    @include animation-iteration-count(5);
-                    @include animation-delay(3s);
-                }
-                .cup{
-
-                    @include animation(openAni 2s ease-in);
-                }
-            }
-        }
         .cupWrapper{
             position: relative;
             display: inline-block;
